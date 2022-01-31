@@ -68,7 +68,7 @@ def decomp(fn_from,pn_to,pn_apktool,pn_dex2jar):
     if pn_to == fn_from:
         pn_to = os.path.join(pn_from,f'{name}_{suf}')
     if suf == 'apk':
-        decomp_apk(fn_from,pn_to,pn_apktool)
+        decomp_apk(fn_from,pn_to,pn_apktool,pn_dex2jar)
         return
     if suf == 'dex':
         decomp_dex(fn_from,pn_dex2jar)
@@ -118,4 +118,3 @@ def main(apk_from,path_to,pn_apktool,pn_dex2jar):
         for fn in t:
             if fn is None:continue
             decomp(fn,fn,pn_apktool,pn_dex2jar)
-
